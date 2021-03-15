@@ -28,6 +28,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         }
     }
 
+    // FROM ANDY: What if the product isn't currently in the HashMap? Then the expected behaviour should be "fail". What does your code do?
     @Override
     public void updateProduct(int productId, String productName, double price) {
         stock.replace(productId, new Product(productId, productName, price));
