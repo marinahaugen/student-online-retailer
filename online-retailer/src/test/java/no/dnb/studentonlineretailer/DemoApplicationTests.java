@@ -1,4 +1,4 @@
-package no.dnb.studentonlineretailer.demo;
+package no.dnb.studentonlineretailer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
