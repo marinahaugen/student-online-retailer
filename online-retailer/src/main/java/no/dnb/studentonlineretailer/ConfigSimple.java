@@ -9,21 +9,21 @@ public class ConfigSimple {
     @Bean
     public MyVatBean my25VatBean() {
         MyVatBean vatBean = new MyVatBean();
-        vatBean.setVatPercentage(25);
+        vatBean.setVatPercentage(0.25);
         return vatBean;
     }
 
     @Bean
     public MyVatBean my27VatBean() {
         MyVatBean vatBean = new MyVatBean();
-        vatBean.setVatPercentage(27);
+        vatBean.setVatPercentage(0.27);
         return vatBean;
     }
 
     @Bean
     public MyVatBean my50VatBean() {
         MyVatBean vatBean = new MyVatBean();
-        vatBean.setVatPercentage(50);
+        vatBean.setVatPercentage(0.50);
         return vatBean;
     }
 

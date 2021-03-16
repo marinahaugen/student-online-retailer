@@ -22,7 +22,7 @@ public class Application {
         //productService.adjustPriceByPercent(1,-10);
         double totalValue = productService.calculateTotalValue();
         System.out.printf("Total values: %.2f", totalValue);
-
+        System.out.println("\nVAT for product 1:");
         System.out.println(productService.calculateVat(1));
 
     }
