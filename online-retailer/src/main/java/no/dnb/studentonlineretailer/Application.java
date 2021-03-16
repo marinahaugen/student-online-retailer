@@ -21,9 +21,13 @@ public class Application {
         ProductService productService = ctx.getBean(ProductService.class);
         //productService.adjustPriceByPercent(1,-10);
         double totalValue = productService.calculateTotalValue();
-        System.out.printf("Total values: %.2f", totalValue);
+        System.out.printf("Total values: %.2f\n", totalValue);
+
         System.out.println("\nVAT for product 1:");
         System.out.println(productService.calculateVat(1));
-
+        System.out.println("\nVAT for product 2:");
+        System.out.println(productService.calculateVat(2));
+        System.out.println("\nVAT for product 3:");
+        System.out.println(productService.calculateVat(3));
     }
 }

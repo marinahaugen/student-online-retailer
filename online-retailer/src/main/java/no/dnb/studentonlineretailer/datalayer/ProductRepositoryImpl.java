@@ -14,7 +14,9 @@ public class ProductRepositoryImpl implements ProductRepository {
     private static long nextId = 1;
 
     public ProductRepositoryImpl() {
-        insertProduct(new Product("Product1", 1000, 5));
+        insertProduct(new Product("Product1", 90, 5));
+        insertProduct(new Product("Product2", 200, 1));
+        insertProduct(new Product("Product3", 20000, 3));
     }
 
     @Override
