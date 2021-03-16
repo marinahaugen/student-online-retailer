@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    private ProductRepository stock;
+    private final ProductRepository stock;
     private final MyVatBean my25VatBean;
     private final MyVatBean my27VatBean;
     private final MyVatBean my50VatBean;
@@ -27,11 +27,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public double calculateTotalValue() {
-        double totalValue = stock.getAllProducts()
-                                 .stream()
-                                 .mapToDouble(p -> p.getPrice() * p.getInStock())
-                                 .sum();
-        return totalValue;
+        return stock.getAllProducts()
+                    .stream()
+                    .mapToDouble(p -> p.getPrice() * p.getInStock())
+                    .sum();
     }
 
     @Override
@@ -55,6 +54,7 @@ public class ProductServiceImpl implements ProductService {
     public void adjustPriceByPercent(long id, double byPercent) {
         Product theProduct = stock.getProductById(id);
         if (theProduct == null) {
+            System.out.println("The product id does not exist.");
         } else {
             theProduct.adjustPriceByPercent(byPercent);
             stock.updateProduct(theProduct);

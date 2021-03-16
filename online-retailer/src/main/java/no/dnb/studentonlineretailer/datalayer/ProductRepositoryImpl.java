@@ -10,7 +10,7 @@ import java.util.Map;
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {
 
-    private Map<Long, Product> stock = new HashMap<>();
+    private final Map<Long, Product> stock = new HashMap<>();
     private static long nextId = 1;
 
     public ProductRepositoryImpl() {
@@ -39,7 +39,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public boolean deleteProduct(int productId) {
+    public boolean deleteProduct(long productId) {
         if (!stock.containsKey(productId)) {
             System.out.println("\n--> Sorry we don't have that productId.");
             return false;

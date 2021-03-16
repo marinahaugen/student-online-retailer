@@ -4,8 +4,8 @@ public class MyVatBean {
 
     private double vatPercentage;
 
-    public double setVatPercentage(double vatPercentage) {
-        return this.vatPercentage = vatPercentage;
+    public void setVatPercentage(double vatPercentage) {
+        this.vatPercentage = vatPercentage;
     }
 
     public double getVatPercentage() {

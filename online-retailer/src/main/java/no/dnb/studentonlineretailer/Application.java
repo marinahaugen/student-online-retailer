@@ -5,7 +5,6 @@ import no.dnb.studentonlineretailer.logiclayer.ProductService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Lazy;
 
 @SpringBootApplication
 public class Application {
@@ -16,7 +15,7 @@ public class Application {
 
         ProductRepository repo = ctx.getBean("productRepositoryImpl", ProductRepository.class);
         repo.getAllProducts()
-            .stream().forEach(p -> System.out.println(p));
+            .forEach(p -> System.out.println(p));
 
         ProductService productService = ctx.getBean(ProductService.class);
         //productService.adjustPriceByPercent(1,-10);

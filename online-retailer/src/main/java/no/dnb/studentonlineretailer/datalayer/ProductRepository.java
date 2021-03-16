@@ -12,7 +12,7 @@ public interface ProductRepository {
     Collection<Product> getAllProducts();
     Product getProductById(long id);
     Product insertProduct(Product product);
-    boolean deleteProduct(int productId);
+    boolean deleteProduct(long id);
     boolean updateProduct(Product product);
 
 }
