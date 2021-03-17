@@ -10,6 +10,6 @@ public interface ProductService {
     Collection<Product> getLowStuckProducts(long threshold);
     double getAveragePrice();
     void adjustPriceByPercent(long id, double percent);
-    public double calculateVat(long id);
+    public double getVatByPrice(double price);
 
 }

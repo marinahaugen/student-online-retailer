@@ -11,17 +11,13 @@ import java.util.stream.Collectors;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductRepository stock;
-    private final MyVatBean my25VatBean;
-    private final MyVatBean my27VatBean;
-    private final MyVatBean my50VatBean;
+    private final ProductRepository stock; //@Qualifier to the database-repo??
+    private final VatSetup vatSetup;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository stock, @Qualifier("my25VatBean") MyVatBean vat25, @Qualifier("my27VatBean") MyVatBean vat27, @Qualifier("my50VatBean") MyVatBean vat50) {
+    public ProductServiceImpl(ProductRepository stock, VatSetup vatSetup) {
         this.stock = stock;
-        this.my25VatBean = vat25;
-        this.my27VatBean = vat27;
-        this.my50VatBean = vat50;
+        this.vatSetup = vatSetup;
     }
 
     @Override
@@ -60,20 +56,7 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    public double calculateVat(long id) {
-        double productPrice = stock.getProductById(id).getPrice();
-        if (productPrice < 100) {
-            return my25VatBean.getVatPercentage() * productPrice;
-
-        } else if (productPrice >= 100 && productPrice <= 10000){
-            return my27VatBean.getVatPercentage() * productPrice;
-
-        } else if (productPrice > 10000) {
-            return my50VatBean.getVatPercentage() * productPrice;
-
-        } else {
-            System.out.println("Sorry, the ID you entered does not exist.");
-            return -0.1;
-        }
+    public double getVatByPrice(double price) {
+        return vatSetup.getVatPercentageByPrice(price);
     }
 }

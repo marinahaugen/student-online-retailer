@@ -1,6 +1,5 @@
 package no.dnb.studentonlineretailer.bizlayer;
 
-import no.dnb.studentonlineretailer.bizlayer.MyVatBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,24 +7,12 @@ import org.springframework.context.annotation.Configuration;
 public class ConfigSimple {
 
     @Bean
-    public MyVatBean my25VatBean() {
-        MyVatBean vatBean = new MyVatBean();
-        vatBean.setVatPercentage(0.25);
-        return vatBean;
-    }
-
-    @Bean
-    public MyVatBean my27VatBean() {
-        MyVatBean vatBean = new MyVatBean();
-        vatBean.setVatPercentage(0.27);
-        return vatBean;
-    }
-
-    @Bean
-    public MyVatBean my50VatBean() {
-        MyVatBean vatBean = new MyVatBean();
-        vatBean.setVatPercentage(0.50);
-        return vatBean;
+    public VatSetup vatSetup() {
+        VatSetup vatSetup = new VatSetup();
+        vatSetup.addVatPolicy(new VatPolicy(0, 100, 25));
+        vatSetup.addVatPolicy(new VatPolicy(101, 10000,27));
+        vatSetup.addVatPolicy(new VatPolicy(10001, VatPolicy.NO_UPPER_LIMIT, 50));
+        return vatSetup;
     }
 
 }
