@@ -1,4 +1,4 @@
-package no.dnb.studentonlineretailer;
+package no.dnb.studentonlineretailer.bizlayer;
 
 public class MyVatBean {
 

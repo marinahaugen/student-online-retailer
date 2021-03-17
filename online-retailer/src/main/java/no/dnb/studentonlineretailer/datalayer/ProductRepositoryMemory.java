@@ -1,6 +1,6 @@
 package no.dnb.studentonlineretailer.datalayer;
 
-import no.dnb.studentonlineretailer.Product;
+import no.dnb.studentonlineretailer.models.Product;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -8,12 +8,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-public class ProductRepositoryImpl implements ProductRepository {
+public class ProductRepositoryMemory implements ProductRepository {
 
     private final Map<Long, Product> stock = new HashMap<>();
     private static long nextId = 1;
 
-    public ProductRepositoryImpl() {
+    public ProductRepositoryMemory() {
         insertProduct(new Product("Product1", 90, 5));
         insertProduct(new Product("Product2", 200, 1));
         insertProduct(new Product("Product3", 20000, 3));

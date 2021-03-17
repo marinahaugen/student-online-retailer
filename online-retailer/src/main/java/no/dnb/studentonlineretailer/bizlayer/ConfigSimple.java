@@ -1,5 +1,6 @@
-package no.dnb.studentonlineretailer;
+package no.dnb.studentonlineretailer.bizlayer;
 
+import no.dnb.studentonlineretailer.bizlayer.MyVatBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -1,7 +1,7 @@
 package no.dnb.studentonlineretailer;
 
 import no.dnb.studentonlineretailer.datalayer.ProductRepository;
-import no.dnb.studentonlineretailer.logiclayer.ProductService;
+import no.dnb.studentonlineretailer.bizlayer.ProductService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +13,7 @@ public class Application {
 
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
 
-        ProductRepository repo = ctx.getBean("productRepositoryImpl", ProductRepository.class);
+        ProductRepository repo = ctx.getBean("productRepositoryMemory", ProductRepository.class);
         repo.getAllProducts()
             .forEach(p -> System.out.println(p));
 

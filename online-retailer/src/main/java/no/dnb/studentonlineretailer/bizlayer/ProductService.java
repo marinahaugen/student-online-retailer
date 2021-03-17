@@ -1,6 +1,6 @@
-package no.dnb.studentonlineretailer.logiclayer;
+package no.dnb.studentonlineretailer.bizlayer;
 
-import no.dnb.studentonlineretailer.Product;
+import no.dnb.studentonlineretailer.models.Product;
 
 import java.util.Collection;
 
