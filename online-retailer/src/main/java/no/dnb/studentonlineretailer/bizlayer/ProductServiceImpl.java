@@ -11,11 +11,11 @@ import java.util.stream.Collectors;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductRepository stock; //@Qualifier to the database-repo??
+    private final ProductRepository stock;
     private final VatSetup vatSetup;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository stock, VatSetup vatSetup) {
+    public ProductServiceImpl(@Qualifier("productRepositoryDatabase") ProductRepository stock, VatSetup vatSetup) {
         this.stock = stock;
         this.vatSetup = vatSetup;
     }
@@ -58,5 +58,40 @@ public class ProductServiceImpl implements ProductService {
 
     public double getVatByPrice(double price) {
         return vatSetup.getVatPercentageByPrice(price);
+    }
+
+    public void doDemo() {
+
+        try {
+            long counter = stock.getProductCount();
+            System.out.printf("\n--> 1. Testing getProductCount(): There are %d different products in stock.", counter);
+
+            System.out.println("\n--> 2. Testing getAllProducts(): These are all the products we have.");
+            displayProducts(stock);
+
+            System.out.printf("\n--> 3. Testing getProductById(id): Product with id 1 is:\n");
+            System.out.println(stock.getProductById(1));
+
+            System.out.println("\n--> 4. Testing insertProduct(product): Added \"Blue flower\" for 55 kr. We have 30 in stock.");
+            Product newProduct = new Product("Blue flower", 55, 30);
+            stock.insertProduct(newProduct);
+
+            System.out.println("\n--> 5. Testing deleteProduct(1):");
+            stock.deleteProduct(1);
+            displayProducts(stock);
+
+            System.out.println("\n--> 6. Testing updateProduct(2):");
+            Product prod = stock.getProductById(2);
+            stock.updateProduct(prod);
+            displayProducts(stock);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private static void displayProducts(ProductRepository stock) {
+        System.out.println("******Products in stock: ");
+        stock.getAllProducts().stream().forEach(p -> System.out.println(p));
     }
 }

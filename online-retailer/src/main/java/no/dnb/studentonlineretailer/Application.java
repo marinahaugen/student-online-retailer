@@ -29,5 +29,7 @@ public class Application {
         System.out.println("\nVAT for product 3:");
         System.out.println(productService.getVatByPrice(20000));
 
+        productService.doDemo();
+
     }
 }

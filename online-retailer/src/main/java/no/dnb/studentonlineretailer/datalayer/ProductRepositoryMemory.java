@@ -29,13 +29,12 @@ public class ProductRepositoryMemory implements ProductRepository {
         return stock.get(id);
     }
 
-    public Product insertProduct(Product product) {
+    public void insertProduct(Product product) {
         if (product.getId() != -1) {                    //Precondition
             throw new IllegalArgumentException("\nId for product-to-be-inserted must be -1.");
         }
         product.setId(nextId++);                        //set id and then post-increment
-        stock.put(product.getId(), product);
-        return product;                                 //enriched with id
+        stock.put(product.getId(), product);            //enriched with id
     }
 
     @Override
@@ -59,6 +58,10 @@ public class ProductRepositoryMemory implements ProductRepository {
             stock.replace(id, product);
             return true;
         }
+    }
+
+    public long getProductCount() {
+        return 0;
     }
 
 }

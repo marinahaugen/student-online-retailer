@@ -11,8 +11,8 @@ public interface ProductRepository {
 
     Collection<Product> getAllProducts();
     Product getProductById(long id);
-    Product insertProduct(Product product);
+    void insertProduct(Product product);
     boolean deleteProduct(long id);
     boolean updateProduct(Product product);
-
+    long getProductCount();
 }
