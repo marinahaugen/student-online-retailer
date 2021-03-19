@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Objects;
+
 
 @Entity
 @Table(name="PRODUCTS")
@@ -15,7 +15,7 @@ public class Product {
     // Passive class. Make the object that should be stored.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long id = -1;
 
     private String name;
     private double price;
@@ -23,7 +23,8 @@ public class Product {
     @Column(name="instock")
     private long inStock;
 
-    public Product() {}
+    public Product() {
+    }
 
     public Product(String name, double price, long inStock) {
         this(-1, name, price, inStock);

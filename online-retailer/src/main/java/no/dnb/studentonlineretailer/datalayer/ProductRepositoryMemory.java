@@ -1,6 +1,7 @@
 package no.dnb.studentonlineretailer.datalayer;
 
 import no.dnb.studentonlineretailer.models.Product;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -8,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
+@Lazy
 public class ProductRepositoryMemory implements ProductRepository {
 
     private final Map<Long, Product> stock = new HashMap<>();
