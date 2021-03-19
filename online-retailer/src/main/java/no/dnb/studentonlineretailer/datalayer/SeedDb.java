@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+// For convenience during development/testing, you can seed the database with some sample data
+
 @Component
 public class SeedDb {
 
