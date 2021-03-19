@@ -62,9 +62,9 @@ public class ProductRepositoryDatabase implements ProductRepository {
         if (entity == null) {
             return false;
         } else {
-            entity.getName();
-            entity.getPrice();
-            entity.getInStock();
+            entity.setName(product.getName());
+            entity.setPrice(product.getPrice());
+            entity.setInStock(product.getInStock());
             return true;
         }
     }

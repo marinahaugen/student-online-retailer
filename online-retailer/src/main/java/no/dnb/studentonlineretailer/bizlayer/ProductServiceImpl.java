@@ -81,9 +81,10 @@ public class ProductServiceImpl implements ProductService {
             stock.deleteProduct(1);
             displayProducts(stock);
 
-            System.out.println("\n--> 6. Testing updateProduct(2):");
-            Product prod = stock.getProductById(2);
-            stock.updateProduct(prod);                                  //How do you enter the new values?? Lets say I want to change name form "Game" to "The Sims"
+            System.out.println("\n--> 6. Testing updateProduct(5):");
+            Product productToBeEdited = stock.getProductById(5);
+            productToBeEdited.setName("Yoghurt light");
+            stock.updateProduct(productToBeEdited);                                  //How do you enter the new values?? Lets say I want to change name form "Game" to "The Sims"
             displayProducts(stock);
 
         } catch (Exception ex) {
