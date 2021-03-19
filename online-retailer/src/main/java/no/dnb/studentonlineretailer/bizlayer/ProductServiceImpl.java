@@ -74,7 +74,8 @@ public class ProductServiceImpl implements ProductService {
 
             System.out.println("\n--> 4. Testing insertProduct(product): Added \"Blue flower\" for 55 kr. We have 30 in stock.");
             Product newProduct = new Product("Blue flower", 55, 30);
-         //   stock.insertProduct(newProduct);
+            stock.insertProduct(newProduct);
+            displayProducts(stock);
 
             System.out.println("\n--> 5. Testing deleteProduct(1):");
             stock.deleteProduct(1);

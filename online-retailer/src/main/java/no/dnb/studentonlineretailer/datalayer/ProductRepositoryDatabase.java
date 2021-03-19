@@ -40,7 +40,7 @@ public class ProductRepositoryDatabase implements ProductRepository {
     @Override
     @Transactional
     public void insertProduct(Product product) {
-        entityManager.persist(product);
+        entityManager.merge(product);
     }
 
     @Override

@@ -80,7 +80,7 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return (int)id;
     }
 
     public void adjustPriceByPercent(double percent) {
