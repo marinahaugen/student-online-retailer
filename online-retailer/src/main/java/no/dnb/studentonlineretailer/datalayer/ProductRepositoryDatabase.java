@@ -69,4 +69,15 @@ public class ProductRepositoryDatabase implements ProductRepository {
         }
     }
 
+    @Transactional
+    public boolean setPriceForProduct (long id, double price) {
+        Product entity = entityManager.find(Product.class, id);
+        if (entity == null) {
+            return false;
+        } else {
+            entity.setPrice(price);
+            return true;
+        }
+    }
+
 }

@@ -66,4 +66,9 @@ public class ProductRepositoryMemory implements ProductRepository {
         return 0;
     }
 
+    @Override
+    public boolean setPriceForProduct(long id, double price) {
+        return false;
+    }
+
 }

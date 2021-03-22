@@ -15,4 +15,5 @@ public interface ProductRepository {
     boolean deleteProduct(long id);
     boolean updateProduct(Product product);
     long getProductCount();
+    boolean setPriceForProduct (long id, double price);
 }

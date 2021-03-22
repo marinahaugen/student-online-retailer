@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -31,6 +30,7 @@ public class FullController {
         }
     }
 
+    //opptional param
     @GetMapping(value = "/products", produces = "application/json")
     public ResponseEntity<Collection<Product>> getProductsMoreThan(@RequestParam(value = "min", required = false, defaultValue = "0.0") double min) {
         Collection<Product> products = repository.getAllProducts()
@@ -40,11 +40,31 @@ public class FullController {
         return ResponseEntity.ok().body(products);
     }
 
+    @GetMapping (value = "/products/averagePrice", produces = "application/json")
+    public ResponseEntity<Double> getAveragePrice() {
+        double average = repository.getAllProducts()
+                                   .stream()
+                                   .mapToDouble(Product::getPrice)
+                                   .average()
+                                   .orElse(0);
+                return ResponseEntity.ok().body(average);
+    }
+
     @PostMapping(value = "/products", consumes = {"application/json"}, produces = {"application/json"})
     public ResponseEntity<Product> insertProduct(@RequestBody Product product) {
         repository.insertProduct(product);
         URI uri = URI.create("/products/" + product.getId());
         return ResponseEntity.created(uri).body(product);
+    }
+
+
+    @PutMapping(value = "/products/{id}/setPrice/{price}", consumes = {"application/json"})
+    public ResponseEntity<Void> setProduct(@PathVariable long id, @PathVariable double price) {
+        if (!repository.setPriceForProduct(id, price)) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok().build();
+        }
     }
 
     @PutMapping(value = "/products/{id}", consumes = {"application/json"})
@@ -55,6 +75,8 @@ public class FullController {
             return ResponseEntity.ok().build();
         }
     }
+
+
 
     @DeleteMapping("products/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable long id) {

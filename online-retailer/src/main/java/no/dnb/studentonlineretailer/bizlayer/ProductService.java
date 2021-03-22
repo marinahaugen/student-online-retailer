@@ -11,5 +11,5 @@ public interface ProductService {
     double getAveragePrice();
     void adjustPriceByPercent(long id, double percent);
     public double getVatByPrice(double price);
-    void doDemo();                                  //Don't want this right?
+    void doDemo();
 }
