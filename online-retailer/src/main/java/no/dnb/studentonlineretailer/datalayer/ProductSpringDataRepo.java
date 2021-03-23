@@ -17,6 +17,6 @@ public interface ProductSpringDataRepo extends CrudRepository<Product, Long> {
     @Query("select prod from Product prod where prod.price >= ?1 and prod.price <= ?2")
     List<Product> findProductInPriceRange(double from, double to);
 
-    Page<Product> findProductByNameContains(String string, Pageable pageable);
+    Page<Product> findByNameContains(String name, Pageable pageable);
 
 }
