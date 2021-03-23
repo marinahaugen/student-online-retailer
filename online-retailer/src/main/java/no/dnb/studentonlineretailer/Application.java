@@ -1,7 +1,9 @@
 package no.dnb.studentonlineretailer;
 
+import no.dnb.studentonlineretailer.bizlayer.ProductServiceUsingSpringData;
 import no.dnb.studentonlineretailer.datalayer.ProductRepository;
 import no.dnb.studentonlineretailer.bizlayer.ProductService;
+import no.dnb.studentonlineretailer.datalayer.ProductSpringDataRepo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -31,6 +33,10 @@ public class Application {
         System.out.println(productService.getVatByPrice(20000));
 */
         productService.doDemo();
+
+        ProductServiceUsingSpringData service = ctx.getBean(ProductServiceUsingSpringData.class);
+        service.doDemoSpringData();
+
 
     }
 }

@@ -30,7 +30,7 @@ public class FullController {
         }
     }
 
-    //opptional param
+    //optional param
     @GetMapping(value = "/products", produces = "application/json")
     public ResponseEntity<Collection<Product>> getProductsMoreThan(@RequestParam(value = "min", required = false, defaultValue = "0.0") double min) {
         Collection<Product> products = repository.getAllProducts()
